@@ -1,5 +1,8 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PropertyOwner extends User {
 
 	private int ownerID;
@@ -7,6 +10,7 @@ public class PropertyOwner extends User {
 	private String ownerLastName;
 	private String ownerEmail;
 	private String ownerPassword;
+	private List<Property> ownedProperty;
 
 	public PropertyOwner(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail,
 			String ownerPassword) {
@@ -18,20 +22,96 @@ public class PropertyOwner extends User {
 		this.ownerPassword = ownerPassword;
 	}
 
+	public int getOwnerID() {
+		return ownerID;
+	}
+
+	public void setOwnerID(int ownerID) {
+		this.ownerID = ownerID;
+	}
+
+	public String getOwnerFirstName() {
+		return ownerFirstName;
+	}
+
+	public void setOwnerFirstName(String ownerFirstName) {
+		this.ownerFirstName = ownerFirstName;
+	}
+
+	public String getOwnerLastName() {
+		return ownerLastName;
+	}
+
+	public void setOwnerLastName(String ownerLastName) {
+		this.ownerLastName = ownerLastName;
+	}
+
+	public String getOwnerEmail() {
+		return ownerEmail;
+	}
+
+	public void setOwnerEmail(String ownerEmail) {
+		this.ownerEmail = ownerEmail;
+	}
+
+	public String getOwnerPassword() {
+		return ownerPassword;
+	}
+
+	public void setOwnerPassword(String ownerPassword) {
+		this.ownerPassword = ownerPassword;
+	}
+
+	public List<Property> getOwnedProperty() {
+		return ownedProperty;
+	}
+
+	public void setOwnedProperty(List<Property> ownedProperty) {
+		this.ownedProperty = ownedProperty;
+	}
+
 	public void ListProperty() {
-
+		if (ownedProperty.isEmpty()) {
+			System.out.println("No properties owned");
+		} else {
+			System.out.println("Property owned by the property owner:");
+			for (Property property : ownedProperty) {
+				System.out.println("Property ID: " + property.getPropertyID());
+			}
+		}
 	}
 
-	public void CreateProperty() {
-
+	private Property findPropertyById(int propertyId) {
+		for (Property property : ownedProperty) {
+			if (property.getPropertyID() == propertyId) {
+				return property;
+			}
+		}
+		return null;
 	}
 
-	public void UpdateProperty() {
-
+	public void CreateProperty(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail, String ownerPassword ) {
+		Property newProperty = new Property(ownerID, ownerFirstName, ownerLastName, ownerEmail, ownerPassword);
+		ownedProperty.add(newProperty);
+		System.out.println("New property created. Property ID: " + newProperty.getPropertyID());
 	}
 
-	public void DeleteProperty() {
-
+	public void UpdateProperty(int propertyId) {
+		Property propertyUpdate = findPropertyById(propertyId);
+		if (propertyUpdate != null) {
+			System.out.println("Property updated. Property ID: " + propertyUpdate.getPropertyID());
+		} else {
+			System.out.println("Property not found.");
+		}
 	}
 
+	public void DeleteProperty(int propertyId) {
+		Property propertyDelete = findPropertyById(propertyId);
+		if (propertyDelete != null) {
+			ownedProperty.remove(propertyDelete);
+			System.out.println("Property deleted. Property ID: " + propertyDelete.getPropertyID());
+		} else {
+			System.out.println("Property not found.");
+		}
+	}
 }
