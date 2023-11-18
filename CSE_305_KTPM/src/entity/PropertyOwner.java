@@ -34,4 +34,28 @@ public class PropertyOwner extends User {
 
 	}
 
+	@Override
+	public void register() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void login() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateProfile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resetPassword() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

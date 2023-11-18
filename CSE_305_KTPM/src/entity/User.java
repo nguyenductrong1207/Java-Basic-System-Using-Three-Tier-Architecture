@@ -1,67 +1,25 @@
 package entity;
 
 public abstract class User {
+    // Attributes
+    protected int UserID;
+    protected String FirstName;
+    protected String LastName;
+    protected String Email;
+    protected String Password;
 
-	private int UserID;
-	private String FirstName;
-	private String LastName;
-	private String Email;
-	private String Password;
+    // Constructor
+    public User(int userID, String firstName, String lastName, String email, String password) {
+        this.UserID = userID;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
+        this.Password = password;
+    }
 
-	public void Register() {
-
-	}
-
-	public void Login() {
-
-	}
-
-	public void UpdateProfile() {
-
-	}
-
-	public void ResetPassword() {
-
-	}
-
-	public int getUserID() {
-		return UserID;
-	}
-
-	public void setUserID(int userID) {
-		UserID = userID;
-	}
-
-	public String getFirstName() {
-		return FirstName;
-	}
-
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
-	}
-
-	public String getLastName() {
-		return LastName;
-	}
-
-	public void setLastName(String lastName) {
-		LastName = lastName;
-	}
-
-	public String getEmail() {
-		return Email;
-	}
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
-	public String getPassword() {
-		return Password;
-	}
-
-	public void setPassword(String password) {
-		Password = password;
-	}
-
+    // Abstract methods
+    public abstract void register();
+    public abstract void login();
+    public abstract void updateProfile();
+    public abstract void resetPassword();
 }
