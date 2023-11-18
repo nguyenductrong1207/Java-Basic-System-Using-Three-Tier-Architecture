@@ -1,9 +1,10 @@
 package entity;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PropertyOwner extends User {
+	static Scanner reader = new Scanner(System.in);
 
 	private int ownerID;
 	private String ownerFirstName;
@@ -90,7 +91,8 @@ public class PropertyOwner extends User {
 		return null;
 	}
 
-	public void CreateProperty(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail, String ownerPassword ) {
+	public void CreateProperty(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail,
+			String ownerPassword) {
 		Property newProperty = new Property(ownerID, ownerFirstName, ownerLastName, ownerEmail, ownerPassword);
 		ownedProperty.add(newProperty);
 		System.out.println("New property created. Property ID: " + newProperty.getPropertyID());
@@ -99,7 +101,9 @@ public class PropertyOwner extends User {
 	public void UpdateProperty(int propertyId) {
 		Property propertyUpdate = findPropertyById(propertyId);
 		if (propertyUpdate != null) {
+			
 			System.out.println("Property updated. Property ID: " + propertyUpdate.getPropertyID());
+
 		} else {
 			System.out.println("Property not found.");
 		}
