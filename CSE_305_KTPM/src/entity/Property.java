@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Property extends User {
+public class Property {
 
 	private int propertyID;
 	private String description;
