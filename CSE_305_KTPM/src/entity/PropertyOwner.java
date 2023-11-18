@@ -15,7 +15,7 @@ public class PropertyOwner extends User {
 
 	public PropertyOwner(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail,
 			String ownerPassword) {
-		super();
+		super(ownerID, ownerPassword, ownerPassword, ownerPassword, ownerPassword);
 		this.ownerID = ownerID;
 		this.ownerFirstName = ownerFirstName;
 		this.ownerLastName = ownerLastName;
@@ -117,5 +117,29 @@ public class PropertyOwner extends User {
 		} else {
 			System.out.println("Property not found.");
 		}
+	}
+
+	@Override
+	public void register() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'register'");
+	}
+
+	@Override
+	public void login() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'login'");
+	}
+
+	@Override
+	public void updateProfile() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'updateProfile'");
+	}
+
+	@Override
+	public void resetPassword() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'resetPassword'");
 	}
 }
