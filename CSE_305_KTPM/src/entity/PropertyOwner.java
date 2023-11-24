@@ -5,62 +5,10 @@ import java.util.Scanner;
 
 public class PropertyOwner extends User {
 	static Scanner reader = new Scanner(System.in);
-
-	private int ownerID;
-	private String ownerFirstName;
-	private String ownerLastName;
-	private String ownerEmail;
-	private String ownerPassword;
 	private List<Property> ownedProperty;
 
-	public PropertyOwner(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail,
-			String ownerPassword) {
-		super(ownerID, ownerPassword, ownerPassword, ownerPassword, ownerPassword);
-		this.ownerID = ownerID;
-		this.ownerFirstName = ownerFirstName;
-		this.ownerLastName = ownerLastName;
-		this.ownerEmail = ownerEmail;
-		this.ownerPassword = ownerPassword;
-	}
-
-	public int getOwnerID() {
-		return ownerID;
-	}
-
-	public void setOwnerID(int ownerID) {
-		this.ownerID = ownerID;
-	}
-
-	public String getOwnerFirstName() {
-		return ownerFirstName;
-	}
-
-	public void setOwnerFirstName(String ownerFirstName) {
-		this.ownerFirstName = ownerFirstName;
-	}
-
-	public String getOwnerLastName() {
-		return ownerLastName;
-	}
-
-	public void setOwnerLastName(String ownerLastName) {
-		this.ownerLastName = ownerLastName;
-	}
-
-	public String getOwnerEmail() {
-		return ownerEmail;
-	}
-
-	public void setOwnerEmail(String ownerEmail) {
-		this.ownerEmail = ownerEmail;
-	}
-
-	public String getOwnerPassword() {
-		return ownerPassword;
-	}
-
-	public void setOwnerPassword(String ownerPassword) {
-		this.ownerPassword = ownerPassword;
+	public PropertyOwner(PropertyOwnerParameter parameterObject) {
+		super(new UserParameter(parameterObject.getOwnerID(), parameterObject.getOwnerFirstName(), parameterObject.getOwnerLastName(), parameterObject.getOwnerEmail(), parameterObject.getOwnerPassword()));
 	}
 
 	public List<Property> getOwnedProperty() {
@@ -91,9 +39,8 @@ public class PropertyOwner extends User {
 		return null;
 	}
 
-	public void CreateProperty(int ownerID, String ownerFirstName, String ownerLastName, String ownerEmail,
-			String ownerPassword) {
-		Property newProperty = new Property(ownerID, ownerFirstName, ownerLastName, ownerEmail, ownerPassword);
+	public void CreateProperty(int propertyID, String description, double rentalRate) {
+		Property newProperty = new Property(propertyID, description, rentalRate);
 		ownedProperty.add(newProperty);
 		System.out.println("New property created. Property ID: " + newProperty.getPropertyID());
 	}
@@ -101,10 +48,10 @@ public class PropertyOwner extends User {
 	public void UpdateProperty(int propertyId) {
 		Property propertyUpdate = findPropertyById(propertyId);
 		if (propertyUpdate != null) {
-			
 			System.out.println("Property updated. Property ID: " + propertyUpdate.getPropertyID());
+		}
 
-		} else {
+		else {
 			System.out.println("Property not found.");
 		}
 	}
@@ -120,26 +67,22 @@ public class PropertyOwner extends User {
 	}
 
 	@Override
-	public void register() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'register'");
+	public void register(int id, String firstName, String lastName, String email, String password) {
+		
 	}
 
 	@Override
-	public void login() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'login'");
+	public void login(String email, String password) {
+		
 	}
 
 	@Override
-	public void updateProfile() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'updateProfile'");
+	public void updateProfile(int id, String firstName, String lastname, String email, String password) {
+
 	}
 
 	@Override
-	public void resetPassword() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'resetPassword'");
+	public void resetPassword(int id, String password) {
+
 	}
 }

@@ -11,14 +11,9 @@ public class Property {
 	private double rentalRate;
 
 	public Property(int propertyID, String description, double rentalRate) {
-		super();
 		this.propertyID = propertyID;
 		this.description = description;
 		this.rentalRate = rentalRate;
-	}
-
-	public Property() {
-		super();
 	}
 
 	Scanner sc = new Scanner(System.in);
