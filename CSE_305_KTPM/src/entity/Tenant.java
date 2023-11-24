@@ -3,43 +3,41 @@ package entity;
 import java.util.HashMap;
 
 public class Tenant extends User {
-	private HashMap<Integer , RentalContract_Lease> renContMap;
+	private HashMap<Integer, RentalContract_Lease> renContMap;
 
-	public Tenant(int tenantID, String tenantFirstName, String tenantLastName, String tenantEmail,
-			String tenantPassword) {
-		super(tenantID, tenantPassword, tenantPassword, tenantPassword, tenantPassword);
+	public Tenant(TenantParameter parameterObject) {
+		super(new UserParameter(parameterObject.getTenantID(), parameterObject.getTenantPassword(),
+				parameterObject.getTenantPassword(), parameterObject.getTenantPassword(),
+				parameterObject.getTenantPassword()));
 	}
 
 	public void CreateRentalContract(int renContID, RentalContract_Lease renCon) {
 		renContMap.put(renContID, renCon);
 	}
 
-	public void TerminateRentalContract() {
+	public void TerminateRentalContract(int contID) {
+		renContMap.remove(contID);
+	}
+
+	@Override
+	public void register(int id, String firstName, String lastName, String email, String password) {
+//		TenantParameter tenentPara = new TenantParameter(id, firstName, lastName, email, password);
+//		Tenant newTenant = new Tenant(tenentPara);
 		
 	}
 
 	@Override
-	public void register() {
-		// TODO Auto-generated method stub
-		
+	public void login(String email, String password) {
 	}
 
 	@Override
-	public void login() {
-		// TODO Auto-generated method stub
-		
+	public void updateProfile(int id, String firstName, String lastname, String email, String password) {
+
 	}
 
 	@Override
-	public void updateProfile() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void resetPassword(int id, String password) {
 
-	@Override
-	public void resetPassword() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

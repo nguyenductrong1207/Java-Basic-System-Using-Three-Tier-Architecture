@@ -9,17 +9,17 @@ public abstract class User {
     protected String Password;
 
     // Constructor
-    public User(int userID, String firstName, String lastName, String email, String password) {
-        this.UserID = userID;
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        this.Email = email;
-        this.Password = password;
+    public User(UserParameter parameterUser) {
+        this.UserID = parameterUser.getUserID();
+        this.FirstName = parameterUser.getFirstName();
+        this.LastName = parameterUser.getLastName();
+        this.Email = parameterUser.getEmail();
+        this.Password = parameterUser.getPassword();
     }
 
     // Abstract methods
-    public abstract void register();
-    public abstract void login();
-    public abstract void updateProfile();
-    public abstract void resetPassword();
+    public abstract void register(int id, String firstName, String lastName, String email, String password);
+    public abstract void login(String email, String password);
+    public abstract void updateProfile(int id, String firstName, String lastname, String email, String password);
+    public abstract void resetPassword(int id, String password);
 }

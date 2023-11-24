@@ -1,31 +1,37 @@
 package entity;
 
-public class RentalContract_Lease {
+import java.util.*;
 
+public class RentalContract_Lease {
 	private int contractID;
 	private int propertyID;
 	private int tenantID;
 	private int startDate;
 	private int endDate;
 	private double rentAmount;
+	private List<RentalContract_Lease> contList;
 
-	public RentalContract_Lease(int contractID, int propertyID, int tenantID, int startDate, int endDate,
-			double rentAmount) {
-		super();
-		this.contractID = contractID;
-		this.propertyID = propertyID;
-		this.tenantID = tenantID;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.rentAmount = rentAmount;
+	public RentalContract_Lease(RentalContract_LeaseParameter parameterObject) {
+		this.contractID = parameterObject.getContractID();
+		this.propertyID = parameterObject.getPropertyID();
+		this.tenantID = parameterObject.getTenantID();
+		this.startDate = parameterObject.getStartDate();
+		this.endDate = parameterObject.getEndDate();
+		this.rentAmount = parameterObject.getRentAmount();
+		contList = new ArrayList<>();
 	}
 
-	public void CreateContract() {
-
+	public void CreateContract(RentalContract_Lease newContract) {
+		contList.add(newContract);
 	}
 
-	public void TerminateContract() {
-
+	public void TerminateContract(int conID) {
+		for (int i = 0; i < contList.size(); i++) {
+			if (contList.get(i).contractID == conID) {
+				contList.remove(i);
+				break;
+			}
+		}
 	}
 
 	public int getContractID() {
